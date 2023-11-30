@@ -1,4 +1,6 @@
 from LIVRE.Book import Book
+import pytest
+
 # Tests pour BookManager
 
 def test_add_book():
