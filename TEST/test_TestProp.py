@@ -1,6 +1,6 @@
 from LIVRE.Book import Book
 from LIVRE.BookManager import BookManager
-
+import pytest
 # Importation de la bibliothèque Hypothesis
 from hypothesis import given, strategies as st
 
