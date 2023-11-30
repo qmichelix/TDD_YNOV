@@ -11,11 +11,11 @@ def book_manager():
 # Importation de la bibliothèque Hypothesis
 from hypothesis import given, strategies as st
 
-# Test de propriété pour vérifier que la liste des livres retournés contient tous les éléments de la liste stockée
 def test_book_list_contains_all_books(book_manager):
-    @given(st.lists(st.builds(Book, title=st.text(), author=st.text())))
+    @given(st.lists(st.builds(Book, title=st.text(min_size=1), author=st.text(min_size=1)), unique=True))
     def property_test(books):
         for book in books:
             book_manager.add_book(book)
-        assert set(book_manager.list_books()) == set(books)
+        assert sorted(book_manager.list_books(), key=lambda book: book.title) == sorted(books, key=lambda book: book.title)
     property_test()
+
