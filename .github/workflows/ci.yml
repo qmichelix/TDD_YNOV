@@ -35,3 +35,4 @@ jobs:
       if: always()
       with:
         files: pytest.xml
+        github_token: ${{ secrets.GITHUB_TOKEN }}
