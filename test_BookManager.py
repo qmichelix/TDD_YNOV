@@ -1,4 +1,5 @@
 from Book import Book
+import pytest
 # Classe pour gérer la liste des livres
 class BookManager:
     def __init__(self):
