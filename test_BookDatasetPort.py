@@ -1,3 +1,7 @@
+from Book import Book
+from BookManager import BookManager
+
+
 from abc import ABC, abstractmethod
 
 # Interface abstraite pour la base de données des livres
