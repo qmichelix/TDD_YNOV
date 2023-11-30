@@ -1,3 +1,13 @@
+from Book import Book
+from BookManager import BookManager
+import pytest
+from BookManager import BookManager
+
+@pytest.fixture
+def book_manager():
+    return BookManager()
+
+
 # Importation de la bibliothèque Hypothesis
 from hypothesis import given, strategies as st
 
