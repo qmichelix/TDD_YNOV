@@ -1,3 +1,4 @@
+from Book import Book
 # Classe pour gérer la liste des livres
 class BookManager:
     def __init__(self):
