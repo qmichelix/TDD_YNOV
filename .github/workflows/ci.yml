@@ -1,7 +1,7 @@
 - name: Set PYTHONPATH
   run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 
-name: Python application
+name: TDD_YNOV
 
 on:
   push:
