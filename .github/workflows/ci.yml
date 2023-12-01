@@ -25,6 +25,10 @@ jobs:
         coverage xml
         coverage report
 
+    - name: Run mutation tests
+      run: |
+        mutmut run
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
