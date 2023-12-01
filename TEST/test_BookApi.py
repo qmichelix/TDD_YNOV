@@ -1,6 +1,6 @@
 import pytest
 from flask_testing import TestCase
-from INTEGRATIONWEB.DTO import BookDTO
+from INTEGRATIONWEB.Dto import BookDTO
 from INTEGRATIONWEB.Controller import app
 
 
