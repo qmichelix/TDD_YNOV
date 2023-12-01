@@ -31,7 +31,7 @@ jobs:
 
         
     - name: Run mutation tests
-      run : mutmut run --paths-to-mutate=./LIVRE/ --runner="pytest"
+      run : mutmut run --paths-to-mutate=./TEST/ --runner="pytest"
 
     - name: Show mutation test results
       run: mutmut results
