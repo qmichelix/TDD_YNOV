@@ -3,6 +3,7 @@ from flask_testing import TestCase
 from INTEGRATIONWEB.Controller import app
 from LIVRE.BookManager import BookManager
 from LIVRE.Book import Book
+from INTEGRATIONWEB.BookService import BookService
 
 class TestBookApi(TestCase):
     def create_app(self):
@@ -10,8 +11,8 @@ class TestBookApi(TestCase):
         return app
 
     def test_get_books(self, mocker):
-        # Mock the BookManager's list_books method
-        mocker.patch.object(BookManager, 'list_books', return_value=[Book("Test Book", "Test Author")])
+    # Mock the get_books method of BookService
+    mocker.patch.object(BookService, 'get_books', return_value=[BookDTO("Mock Book", "Mock Author")])
 
         response = self.client.get('/books')
         assert response.status_code == 200
