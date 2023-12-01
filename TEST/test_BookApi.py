@@ -1,40 +1,28 @@
 import pytest
-from flask_testing import TestCase
+from flask.testing import FlaskClient
 from INTEGRATIONWEB.Controller import app
-from LIVRE.BookManager import BookManager
-from LIVRE.Book import Book
-from INTEGRATIONWEB.BookService import BookService
 
-class TestBookApi(TestCase):
-    def create_app(self):
-        app.config['TESTING'] = True
-        return app
+@pytest.fixture
+def client():
+    with app.test_client() as client:
+        yield client
 
-    def test_get_books(self, mocker):
-    # Mock the get_books method of BookService
-        mocker.patch.object(BookService, 'get_books', return_value=[BookDTO("Mock Book", "Mock Author")])
+def test_get_books(client):
+    response = client.get('/books')
+    assert response.status_code == 200
+    assert isinstance(response.json, list)
 
-        response = self.client.get('/books')
-        assert response.status_code == 200
-        assert response.json == [{"title": "Test Book", "author": "Test Author"}]
+def test_add_book(client):
+    book = {"title": "Test Book", "author": "Test Author"}
+    response = client.post('/books', json=book)
+    assert response.status_code == 201
+    assert response.json == book
 
-    def test_add_book(self, mocker):
-        # Mock the BookManager's add_book method
-        mocker.patch.object(BookManager, 'add_book')
+    # Verify if the book is added
+    get_response = client.get('/books')
+    assert book in get_response.json
 
-        book_data = {"title": "New Book", "author": "New Author"}
-        response = self.client.post('/books', json=book_data)
-        assert response.status_code == 201
-        assert response.json == book_data
-
-        # Verify if the add_book method was called
-        BookManager.add_book.assert_called_once_with(Book("New Book", "New Author"))
-
-    def test_error_handling(self):
-        # Test error handling for bad request
-        response = self.client.post('/books', json={"title": "Incomplete Data"})
-        assert response.status_code == 400
-
-# Run the tests
-if __name__ == '__main__':
-    pytest.main()
+def test_error_handling(client):
+    # Test error handling for bad request
+    response = client.post('/books', json={"title": "Incomplete Data"})
+    assert response.status_code == 400
