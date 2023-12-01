@@ -29,7 +29,7 @@ jobs:
         coverage report
 
     - name: Run mutation tests
-      run : mutmut run --paths-to-mutate=./LIVRE/ --tests-dir=./TEST/ --runner="pytest" | true
+      run : mutmut run --paths-to-mutate=./LIVRE/ --tests-dir=./TEST/ --runner="pytest" || true
  
     - name: Show mutation test results
       run: mutmut results
