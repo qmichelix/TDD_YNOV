@@ -1,22 +1,20 @@
+# INTEGRATIONWEB/Controller.py
+
 from flask import Flask, request, jsonify
 from INTEGRATIONWEB.DTO import BookDTO
-from LIVRE.BookManager import BookManager
+from INTEGRATIONWEB.BookService import BookService
 
 app = Flask(__name__)
-
-# Simulated database for demonstration
-books_db = []
+book_service = BookService()
 
 @app.route('/books', methods=['GET'])
 def get_books():
-    return jsonify([book.to_dict() for book in books_db])
+    books = book_service.get_books()
+    return jsonify([book.to_dict() for book in books])
 
 @app.route('/books', methods=['POST'])
 def add_book():
     book_data = request.json
     book = BookDTO.from_dict(book_data)
-    books_db.append(book)
+    book_service.add_book(book)
     return jsonify(book.to_dict()), 201
-
-if __name__ == '__main__':
-    app.run(debug=True)
