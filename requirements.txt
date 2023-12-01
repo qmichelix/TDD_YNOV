@@ -3,3 +3,4 @@ pip
 hypothesis
 coverage
 mutmut
+Flask-Testing
