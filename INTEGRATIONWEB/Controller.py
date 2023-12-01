@@ -1,16 +1,21 @@
 from flask import Flask, request, jsonify
-from INTEGRATIONWEB.BookService import BookService
+from INTEGRATIONWEB.DTO import BookDTO
 
 app = Flask(__name__)
-book_service = BookService()
+
+# Simulated database for demonstration
+books_db = []
 
 @app.route('/books', methods=['GET'])
 def get_books():
-    books = book_service.get_books()
-    return jsonify([book.to_dict() for book in books])
+    return jsonify([book.to_dict() for book in books_db])
 
 @app.route('/books', methods=['POST'])
 def add_book():
     book_data = request.json
-    book = book_service.add_book(book_data)
+    book = BookDTO.from_dict(book_data)
+    books_db.append(book)
     return jsonify(book.to_dict()), 201
+
+if __name__ == '__main__':
+    app.run(debug=True)
