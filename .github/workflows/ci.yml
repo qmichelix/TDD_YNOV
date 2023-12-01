@@ -18,6 +18,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install mutmut
 
     - name: Run tests with coverage
       run: |
@@ -26,8 +27,7 @@ jobs:
         coverage report
 
     - name: Run mutation tests
-      run: |
-        mutmut run
+      run: mutmut run --paths-to-mutate=TDD_YNOV/TEST/
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
