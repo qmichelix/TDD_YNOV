@@ -1,27 +1,28 @@
 import pytest
-from flask import Flask
-from INTEGRATIONWEB.Controller import app as flask_app
-from INTEGRATIONWEB.BookService import BookService
+from flask_testing import TestCase
+from Controller import app
+from INTEGRATIONWEB.DTO import BookDTO
+from INTEGRATIONWEB.Controller import app
 
-@pytest.fixture
-def app():
-    app = flask_app
-    app.config['TESTING'] = True
-    return app
+class TestBookApi(TestCase):
+    def create_app(self):
+        app.config['TESTING'] = True
+        return app
 
-@pytest.fixture
-def client(app):
-    return app.test_client()
+    def test_get_books(self):
+        response = self.client.get('/books')
+        self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(response.json, list)
 
-def test_get_books(client, mocker):
-    mock_service = mocker.patch.object(BookService, 'get_books', return_value=[])
-    response = client.get('/books')
-    assert response.status_code == 200
-    mock_service.assert_called_once()
+    def test_add_book(self):
+        book = {"title": "Test Book", "author": "Test Author"}
+        response = self.client.post('/books', json=book)
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.json, book)
 
-def test_add_book(client, mocker):
-    book_data = {"title": "Test Book", "author": "Test Author"}
-    mock_service = mocker.patch.object(BookService, 'add_book', return_value=book_data)
-    response = client.post('/books', json=book_data)
-    assert response.status_code == 201
-    mock_service.assert_called_once_with(book_data)
+        # Verify if the book is added
+        get_response = self.client.get('/books')
+        self.assertIn(book, get_response.json)
+
+if __name__ == '__main__':
+    pytest.main()
