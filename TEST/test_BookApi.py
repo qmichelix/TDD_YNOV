@@ -1,6 +1,7 @@
 import pytest
 from INTEGRATIONWEB.Dto import BookDTO
 from INTEGRATIONWEB.Controller import app
+from INTEGRATIONWEB.BookService import get_books, add_book
 
 @pytest.fixture
 def client():
