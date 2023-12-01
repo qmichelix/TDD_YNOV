@@ -12,7 +12,7 @@ class TestBookApi(TestCase):
 
     def test_get_books(self, mocker):
     # Mock the get_books method of BookService
-    mocker.patch.object(BookService, 'get_books', return_value=[BookDTO("Mock Book", "Mock Author")])
+        mocker.patch.object(BookService, 'get_books', return_value=[BookDTO("Mock Book", "Mock Author")])
 
         response = self.client.get('/books')
         assert response.status_code == 200
