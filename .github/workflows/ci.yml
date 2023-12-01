@@ -1,35 +1,33 @@
-name: TDD_YNOV
+name: Python CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python 3.8
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: '3.8'
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Install Hypothesis
-      run: pip install hypothesis
+    - name: Run tests with coverage
+      run: |
+        coverage run -m pytest
+        coverage xml
+        coverage report
 
-    - name: Set PYTHONPATH
-      run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
-
-    - name: Run Pytest
-      run: pytest ./TEST
-
-    # Ajoutez ici d'autres étapes si nécessaire, comme la publication des résultats des tests
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # Non nécessaire pour les dépôts publics
+        files: ./coverage.xml
+        fail_ci_if_error: true
