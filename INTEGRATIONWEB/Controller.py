@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from DTO import BookDTO
+from Dto import BookDTO
 
 app = Flask(__name__)
 
