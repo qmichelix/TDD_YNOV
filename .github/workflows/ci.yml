@@ -28,6 +28,7 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} # Non nécessaire pour les dépôts publics
         files: ./coverage.xml
+        flags: unittests
         fail_ci_if_error: true
+        verbose: true
