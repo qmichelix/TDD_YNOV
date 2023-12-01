@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from INTEGRATIONWEB.DTO import BookDTO
+from LIVRE.BookManager import BookManager
 
 app = Flask(__name__)
 
