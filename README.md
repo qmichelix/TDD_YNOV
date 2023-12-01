@@ -12,7 +12,7 @@ The project follows a hexagonal architecture organized as follows:
   - `DOMAIN/`: Contains domain interfaces, defining operations that can be performed on data, like a `BookInterface` for data persistence.
   - `INFRA/`: Contains implementations of domain interfaces, like `BookRepository` which interacts with the database.
   - `TEST/`: Contains all unit tests, e.g., `test_book.py` for testing the logic of the `Book` class and associated services.
-
+domain - > model / port / usecases (tests)
 ## Models
 
 ### Book
