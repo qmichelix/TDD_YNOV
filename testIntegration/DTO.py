@@ -14,3 +14,4 @@ class BookDTO:
     def from_dict(data):
         """ Crée un objet DTO à partir d'un dictionnaire. """
         return BookDTO(title=data["title"], author=data["author"])
+
