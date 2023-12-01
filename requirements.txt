@@ -4,3 +4,4 @@ hypothesis
 coverage
 mutmut
 Flask-Testing
+pytest-mock
