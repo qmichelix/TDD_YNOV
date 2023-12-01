@@ -28,7 +28,7 @@ jobs:
 
         
     - name: Run mutation tests
-      run : mutmut run --paths-to-mutate=./TEST/ --runner="pytest"
+      run : mutmut run --paths-to-mutate=TDD_YNOV/LIVRE/ --tests-dir=TDD_YNOV/TEST/ --runner="pytest"
 
     - name: Show mutation test results
       run: mutmut results
