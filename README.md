@@ -6,13 +6,12 @@ This project is a simple Python application to manage a list of books, demonstra
 
 The project follows a hexagonal architecture organized as follows:
 
-  - `application/`: Contains the application logic separated into models and services.
-  - `model/`: Contains the data models, e.g., the `Book` class.
-  - `cases/`: Contains the use cases, e.g., cases for creating and listing books.
-  - `domain/`: Contains domain interfaces, defining operations that can be performed on data, like a `BookInterface` for data persistence.
-  - `infrastructure/`: Contains implementations of domain interfaces, like `BookRepository` which interacts with the database.
-  - `tests/`: Contains all unit tests, e.g., `test_book.py` for testing the logic of the `Book` class and associated services.
-  - `main.py`: The entry point of the application.
+  - `APP/`: Contains the application logic separated into models and services.
+  - `MODEL/`: Contains the data models, e.g., the `Book` class.
+  - `USESCASES/`: Contains the use cases, e.g., cases for creating and listing books.
+  - `DOMAIN/`: Contains domain interfaces, defining operations that can be performed on data, like a `BookInterface` for data persistence.
+  - `INFRA/`: Contains implementations of domain interfaces, like `BookRepository` which interacts with the database.
+  - `TEST/`: Contains all unit tests, e.g., `test_book.py` for testing the logic of the `Book` class and associated services.
 
 ## Models
 
@@ -20,11 +19,11 @@ The project follows a hexagonal architecture organized as follows:
 
 The `Book` class represents a book with a title and an author. Both fields are required.
 
-## Services
+## Manager
 
-### BookService
+### BookManager
 
-The `BookService` class provides methods to add a new book and list all books.
+The `BookManager` class provides methods to add a new book and list all books.
 
 #### Methods
 
