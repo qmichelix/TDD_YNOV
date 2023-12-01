@@ -1,7 +1,8 @@
 import pytest
 from flask_testing import TestCase
-from INTEGRATIONWEB.Controller import app
 from INTEGRATIONWEB.DTO import BookDTO
+from INTEGRATIONWEB.Controller import app
+
 
 class TestBookApi(TestCase):
     def create_app(self):
