@@ -1,6 +1,7 @@
 import pytest
 from flask.testing import FlaskClient
 from INTEGRATIONWEB.Controller import app
+from INTEGRATIOWEB.DTO import BookDTO
 
 @pytest.fixture
 def client():
