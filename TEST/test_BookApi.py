@@ -9,13 +9,12 @@ def client():
         yield client
 
 def test_get_books(client, mocker):
-    # Simuler une méthode de service
-    mock_service = mocker.patch('INTEGRATIONWEB.YourService.your_service_function', return_value=[{"title": "Mock Book", "author": "Mock Author"}])
+    # Simuler la méthode get_books de BookService
+    mock_service = mocker.patch('INTEGRATIONWEB.BookService.BookService.get_books', return_value=[{"title": "Mock Book", "author": "Mock Author"}])
 
     response = client.get('/books')
     assert response.status_code == 200
     assert isinstance(response.json, list)
-    # Vérifier si le mock a été appelé
     mock_service.assert_called_once()
 
 def test_add_book(client, mocker):
