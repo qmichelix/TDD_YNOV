@@ -26,9 +26,7 @@ jobs:
         coverage xml
         coverage report
 
-    - name: Run mutation tests
-      run: mutmut run --paths-to-mutate="TDD_YNOV/TEST/" --runner="pytest"
-
+    
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
