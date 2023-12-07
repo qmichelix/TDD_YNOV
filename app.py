@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from LIVRE.Book import db  # Assurez-vous que ce chemin d'importation est correct
+from models import db  # Assurez-vous que ce chemin d'importation est correct
 
 app = Flask(__name__)
 
