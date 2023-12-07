@@ -5,3 +5,6 @@ coverage
 mutmut
 Flask-Testing
 pytest-mock
+flask-sqlalchemy
+flask-migrate
+psycopg2-binary
