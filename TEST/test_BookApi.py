@@ -1,7 +1,7 @@
 import pytest
 from flask.testing import FlaskClient
 from unittest.mock import patch
-from INTEGRATIONWEB.Controller import app
+from INTEGRATIONWEB.ControllerMock import app
 from INTEGRATIONWEB.DTO import BookDTO
 
 @pytest.fixture
