@@ -12,3 +12,14 @@ with app.app_context():
     db.create_all()  # Crée les tables si elles n'existent pas
 
 # Autres configurations et routes de votre application
+from flask import Flask
+from models import db
+from config import Config
+
+app = Flask(__name__)
+app.config.from_object(Config)
+db.init_app(app)
+
+flask db init
+flask db migrate -m "Initial migration."
+flask db upgrade
