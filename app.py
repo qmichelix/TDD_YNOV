@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from your_application_name.Book import db  # Importez db de votre fichier Book.py
+from LIVRE.Book import db  # Importez db de votre fichier Book.py
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://utilisateur:mot_de_passe@localhost/nom_de_votre_db'
