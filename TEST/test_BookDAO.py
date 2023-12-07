@@ -4,14 +4,16 @@ from LIVRE.Book import Book
 
 @pytest.fixture(scope="module")
 def book_dao():
-    # Initialisez ici votre DAO, par exemple avec une connexion à la base de données
-    return BookDAO()
+    db_url = "postgresql://user:password@localhost:5432/test_db"
+    return BookDAO(db_url)
 
 def test_add_book(book_dao):
     book = Book("Test Title", "Test Author")
     book_dao.add_book(book)
-    # Ajoutez ici des assertions pour vérifier que le livre a été ajouté
+    # Vérifiez que le livre a été ajouté
+    assert book in book_dao.get_all_books()
 
 def test_get_all_books(book_dao):
     books = book_dao.get_all_books()
-    # Ajoutez ici des assertions pour vérifier la liste des livres
+    # Vérifiez la liste des livres
+    assert isinstance(books, list)
