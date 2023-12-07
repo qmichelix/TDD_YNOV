@@ -6,6 +6,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: nom_de_votre_db
+          POSTGRES_USER: utilisateur
+          POSTGRES_PASSWORD: mot_de_passe
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
     - uses: actions/checkout@v2
 
@@ -29,8 +44,8 @@ jobs:
         coverage report
 
     - name: Run mutation tests
-      run : mutmut run --paths-to-mutate=./LIVRE/ --tests-dir=./TEST/ --runner="pytest" || true
- 
+      run: mutmut run --paths-to-mutate=./LIVRE/ --tests-dir=./TEST/ --runner="pytest" || true
+
     - name: Show mutation test results
       run: mutmut results
 
