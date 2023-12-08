@@ -3,7 +3,7 @@ import requests
 
 @given('the system is ready to add books')
 def step_impl(context):
-    context.url = "http://127.0.0.1:5000/"
+    context.url = "http://localhost/books"
 
 @when('I add a book with title "{title}" and author "{author}"')
 def step_impl(context, title, author):
