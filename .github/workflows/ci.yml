@@ -39,7 +39,7 @@ jobs:
 
     - name: Run database migrations
       run: |
-        export FLASK_APP=app.py  # Remplacez par le chemin d'accès à votre application Flask
+        export FLASK_APP=app.py 
         flask db upgrade
 
     - name: Run component tests
