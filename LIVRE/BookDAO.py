@@ -13,9 +13,11 @@ class BookDAO:
             session.commit()
 
     def get_all_books(self):
-        with self.Session() as session:
-            books = session.query(Book).all()
-            return [self._book_to_dict(book) for book in books]
+        session = self.Session()
+        try:
+            return session.query(Book).all()
+        finally:
+            session.close()
 
     @staticmethod
     def _book_to_dict(book):
