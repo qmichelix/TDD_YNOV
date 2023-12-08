@@ -46,7 +46,8 @@ jobs:
       run: |
         export FLASK_APP=app.py
         flask run &
-
+        background: true
+        
     - name: Run component tests
       run: |
         behave tests_component/
