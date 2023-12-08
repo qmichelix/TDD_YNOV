@@ -10,6 +10,9 @@ def step_impl(context, title, author):
     response = requests.post(context.url, json={"title": title, "author": author})
     context.response = response
 
-@then('the book should be added successfully')
+
+@then(u'the book should be added successfully')
 def step_impl(context):
+    print("Response status code:", context.response.status_code)
+    print("Response body:", context.response.json())
     assert context.response.status_code == 201
