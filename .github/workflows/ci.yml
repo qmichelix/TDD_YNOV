@@ -42,6 +42,10 @@ jobs:
         export FLASK_APP=app.py  # Remplacez par le chemin d'accès à votre application Flask
         flask db upgrade
 
+    - name: Run component tests
+      run: |
+        behave tests_component/
+
     - name: Run tests with coverage
       run: |
         coverage run -m pytest
