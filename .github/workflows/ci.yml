@@ -39,6 +39,7 @@ jobs:
 
     - name: Run database migrations
       run: |
+        export FLASK_APP=app.py  # Remplacez par le chemin d'accès à votre application Flask
         flask db upgrade
 
     - name: Run tests with coverage
