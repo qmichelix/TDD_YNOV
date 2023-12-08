@@ -3,7 +3,7 @@ import requests
 
 @given('the system is ready to list books')
 def step_impl(context):
-    context.url = "http://localhost:5000/books"
+    context.url = "http://127.0.0.1:5000/books"
 
 @when('I request the list of books')
 def step_impl(context):
