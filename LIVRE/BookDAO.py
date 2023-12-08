@@ -8,10 +8,19 @@ class BookDAO:
         self.Session = sessionmaker(bind=self.engine)
 
     def add_book(self, book):
-        session = self.Session()
-        session.add(book)
-        session.commit()
+        with self.Session() as session:
+            session.add(book)
+            session.commit()
 
     def get_all_books(self):
-        session = self.Session()
-        return session.query(Book).all()
+        with self.Session() as session:
+            books = session.query(Book).all()
+            return [self._book_to_dict(book) for book in books]
+
+    @staticmethod
+    def _book_to_dict(book):
+        return {
+            'id': book.id,
+            'title': book.title,
+            'author': book.author
+        }
