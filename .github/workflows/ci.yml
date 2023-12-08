@@ -62,7 +62,7 @@ jobs:
   
     - name: Run component tests
       run: |
-        behave tests_component/ ||true
+        behave tests_component/ 
 
     - name: Run tests with coverage
       run: |
