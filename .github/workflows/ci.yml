@@ -42,6 +42,11 @@ jobs:
         export FLASK_APP=app.py 
         flask db upgrade
 
+    - name: Start Flask Server
+      run: |
+        export FLASK_APP=app.py
+        flask run &
+
     - name: Run component tests
       run: |
         behave tests_component/
