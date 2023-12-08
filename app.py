@@ -20,4 +20,4 @@ with app.app_context():
 # Après avoir initialisé 'db'
 migrate = Migrate(app, db)
 
-
+app.run(host='0.0.0.0')
