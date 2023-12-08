@@ -11,12 +11,9 @@ def test_add_book(book_dao):
     book = Book("Test Title", "Test Author")
     book_dao.add_book(book)
 
-    # Récupérer tous les livres et vérifier si le livre ajouté existe
+    # Récupérer tous les livres et vérifier si un livre avec le même titre et auteur existe
     all_books = book_dao.get_all_books()
-    assert any(b.title == book.title and b.author == book.author for b in all_books)
-
-
-
+    assert any(b.title == "Test Title" and b.author == "Test Author" for b in all_books)
 
 def test_get_all_books(book_dao):
     books = book_dao.get_all_books()
