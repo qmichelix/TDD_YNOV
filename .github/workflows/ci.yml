@@ -47,7 +47,10 @@ jobs:
         export FLASK_APP=app.py
         flask run &
       shell: bash
-        
+
+    - name: Wait for Flask server to start
+      run: sleep 5
+  
     - name: Run component tests
       run: |
         behave tests_component/
