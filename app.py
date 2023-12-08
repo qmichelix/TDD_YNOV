@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from models import db  # Assurez-vous que ce chemin d'importation est correct
 
+from flask_migrate import Migrate
 app = Flask(__name__)
 
 # Assurez-vous que cette URI de base de données est correcte et correspond à votre configuration CI/CD
@@ -15,4 +16,8 @@ with app.app_context():
     db.create_all()
 
 # Autres configurations et routes de votre application
+
+# Après avoir initialisé 'db'
+migrate = Migrate(app, db)
+
 
