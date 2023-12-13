@@ -76,3 +76,9 @@ To set up the project:
 
 
 [![codecov](https://codecov.io/gh/Jonathan2433/Book_Store/branch/master/graph/badge.svg?token=1087475e-4ba4-48a4-8d26-51cdf36f979a)](https://codecov.io/gh/Jonathan2433/Book_Store)
+
+
+
+![image](https://github.com/qmichelix/TDD_YNOV/assets/109591838/1769e850-8250-4a87-987b-68c4c738f17c)
+
+Le build s'est fait en 2mins et 28 secondes en passant tous les tests :D à la 237ème execution du workflow.
