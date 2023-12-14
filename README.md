@@ -2,17 +2,6 @@
 
 This project is a simple Python application to manage a list of books, demonstrating a clean architecture and Test-Driven Development (TDD) approach.
 
-## Project Structure
-
-The project follows a hexagonal architecture organized as follows:
-
-  - `APP/`: Contains the application logic separated into models and services.
-  - `MODEL/`: Contains the data models, e.g., the `Book` class.
-  - `USESCASES/`: Contains the use cases, e.g., cases for creating and listing books.
-  - `DOMAIN/`: Contains domain interfaces, defining operations that can be performed on data, like a `BookInterface` for data persistence.
-  - `INFRA/`: Contains implementations of domain interfaces, like `BookRepository` which interacts with the database.
-  - `TEST/`: Contains all unit tests, e.g., `test_book.py` for testing the logic of the `Book` class and associated services.
-domain - > model / port / usecases (tests)
 ## Models
 
 ### Book
