@@ -62,9 +62,7 @@ To set up the project:
 4. Run tests using `pytest -v` in the root directory.
 
 
-
 https://app.codecov.io/gh/qmichelix/TDD_YNOV?displayType=tree
-
 
 
 ![image](https://github.com/qmichelix/TDD_YNOV/assets/109591838/1769e850-8250-4a87-987b-68c4c738f17c)
