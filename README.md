@@ -63,8 +63,7 @@ To set up the project:
 
 
 
-
-[![codecov](https://codecov.io/gh/Jonathan2433/Book_Store/branch/master/graph/badge.svg?token=1087475e-4ba4-48a4-8d26-51cdf36f979a)](https://codecov.io/gh/Jonathan2433/Book_Store)
+https://app.codecov.io/gh/qmichelix/TDD_YNOV?displayType=tree
 
 
 
